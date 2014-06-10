@@ -1,4 +1,6 @@
-package com.example.goodjobstamp;
+package com.fivetrue.goodjobstamp;
+
+import com.example.goodjobstamp.R;
 
 import android.app.Activity;
 import android.app.ActionBar;
