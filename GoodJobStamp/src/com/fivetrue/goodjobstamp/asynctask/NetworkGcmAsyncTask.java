@@ -43,8 +43,18 @@ public class NetworkGcmAsyncTask extends NetworkBaseASyncTask {
 			e.printStackTrace();
 			mListener.onError("Gcm Message Send Error");
 		}
+		return msg;
+	}
+	
+	@Override
+	protected void onPostExecute(Object result) {
+		// TODO Auto-generated method stub
+		super.onPostExecute(result);
+		if(result != null){
+			GcmMessage msg = (GcmMessage) result;
+			mListener.onReceiveMessage(msg);
+		}
 		
-		return null;
 	}
 
 }
