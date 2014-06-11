@@ -1,5 +1,12 @@
 package com.fivetrue.goodjobstamp.asynctask;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 import com.fivetrue.goodjobstamp.basemodel.BaseNetworkListener;
@@ -7,10 +14,14 @@ import com.fivetrue.goodjobstamp.basemodel.BaseNetworkListener;
 public class NetworkSocketASyncTask extends NetworkBaseASyncTask{
 
 	private Socket mSocket = null;
+	private OutputStream mOutput = null;
+	private InputStream mInput = null;
+	private PrintWriter mWriter = null;
+	private BufferedReader mBufferedReader = null;
 	private BaseNetworkListener mListener = null;
 	
 	private NetworkSocketASyncTask(Socket socket){
-		
+		mSocket = socket;
 	}
 	
 	static public NetworkSocketASyncTask getInstance(Socket socket){
@@ -19,7 +30,7 @@ public class NetworkSocketASyncTask extends NetworkBaseASyncTask{
 	
 	
 	@Override
-	public void sendMessage(String msg, BaseNetworkListener listener) {
+	public void sendMessage(Object msg, BaseNetworkListener listener) {
 		// TODO Auto-generated method stub
 		if(msg != null && listener != null && this.mSocket != null){
 			mListener = listener;
@@ -35,13 +46,43 @@ public class NetworkSocketASyncTask extends NetworkBaseASyncTask{
 	protected void onPreExecute() {
 		// TODO Auto-generated method stub
 		super.onPreExecute();
+      
 	}
 
 	@Override
 	protected Object doInBackground(Object... params) {
 		// TODO Auto-generated method stub
+		try {
+			mOutput = mSocket.getOutputStream();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			mListener.onError("Socket OutputStream Error");
+		}
 		
-		return null;
+		try {
+			mInput = mSocket.getInputStream();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			mListener.onError("Socket InputStream Error");
+		}
+		
+		
+		mWriter = new PrintWriter(new OutputStreamWriter(mOutput));
+		mBufferedReader = new BufferedReader(new InputStreamReader(mInput));
+		
+		mWriter.print((String)params[0]);
+		mWriter.flush();
+		Object receive = null;
+		try {
+			receive = mBufferedReader.readLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			mListener.onError("Socket Read Error");
+		}
+		return receive;
 	}
 	
 	@Override
