@@ -1,30 +1,42 @@
 package com.fivetrue.goodjobstamp;
 
-import com.example.goodjobstamp.R;
+import com.fivetrue.goodjobstamp.R;
+import com.fivetrue.goodjobstamp.vo.StampVO;
 
-import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.os.Build;
 
-public class IntroActivity extends Activity {
+public class IntroActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intro);
+        setContentView(R.layout.fragment_intro);
+        
+        findViewById(R.id.btn).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				StampVO stamp = new StampVO();
+				stamp.setName("'ojkwon'");
+				stamp.setSenderId(mPref.getGcmDeviceId());
+				
+				mStampDB.setData(stamp);
+			}
+		});
 
-        if (savedInstanceState == null) {
+        /*if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
-        }
+        }*/
     }
 
 

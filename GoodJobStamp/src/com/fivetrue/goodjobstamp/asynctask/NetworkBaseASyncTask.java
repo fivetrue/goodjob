@@ -4,8 +4,8 @@ import com.fivetrue.goodjobstamp.basemodel.BaseNetworkListener;
 
 import android.os.AsyncTask;
 
-abstract public class NetworkBaseASyncTask extends AsyncTask <Object, Object, Object>{
+abstract public class NetworkBaseASyncTask <T> extends AsyncTask <T, Object, T>{
 
-	abstract public void sendMessage(Object msg, BaseNetworkListener listener);
+	abstract public void sendMessage(T msg, BaseNetworkListener<T> listener);
 
 }

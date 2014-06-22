@@ -1,9 +1,9 @@
 package com.fivetrue.goodjobstamp.basemodel;
 
-public interface BaseNetworkListener {
+public interface BaseNetworkListener <T> {
 	
-	public void onReceiveMessage(Object obj);
-	public void onError(Object obj);
-	public void onTimeout(Object obj);
+	public void onReceiveMessage(T obj);
+	public void onError(T obj);
+	public void onTimeout(T obj);
 
 }

@@ -1,6 +1,6 @@
 package com.fivetrue.goodjobstamp.asynctask;
 
-import com.example.goodjobstamp.R;
+import com.fivetrue.goodjobstamp.R;
 
 import android.app.Activity;
 import android.app.Dialog;

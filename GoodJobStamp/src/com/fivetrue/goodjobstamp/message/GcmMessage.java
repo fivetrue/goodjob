@@ -1,4 +1,4 @@
-package com.fivetrue.goodjobstamp.message;
+	package com.fivetrue.goodjobstamp.message;
 
 import android.os.Bundle;
 
@@ -7,6 +7,7 @@ public class GcmMessage implements BaseMessage{
 	private Bundle mBundle = null;
 	private String receiver = null;
 	private String messageId = null;
+	private String errorMessage = null;
 	private long timeToLive = -1;
 	
 	public GcmMessage(){}
@@ -71,6 +72,21 @@ public class GcmMessage implements BaseMessage{
 	public Bundle getBundleData() {
 		// TODO Auto-generated method stub
 		return mBundle;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
+	@Override
+	public String toString() {
+		return "GcmMessage [receiver=" + receiver + ", messageId=" + messageId
+				+ ", errorMessage=" + errorMessage + ", timeToLive="
+				+ timeToLive + "]";
 	}
 
 }
