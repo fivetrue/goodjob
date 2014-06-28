@@ -17,6 +17,7 @@ public class BaseActivity extends FragmentActivity {
 
 	protected UserPrefrenceManager mPref = null;
 	protected StampDB mStampDB = null;
+	private GoogleCloudMessaging Gcm = null;
 	
 	private StampDBListener mStampListener = new StampDBListener() {
 		
@@ -30,6 +31,30 @@ public class BaseActivity extends FragmentActivity {
 		public void insertRow(long row, StampVO data) {
 			// TODO Auto-generated method stub
 			log(row + " = " + data.toString());
+			GcmMessage msg = new GcmMessage();
+			msg.setReceiver(mPref.getGcmDeviceId());
+			msg.setJsonString(data);
+			NetworkGcmAsyncTask.getInstance(Gcm).sendMessage(msg, new BaseNetworkListener<GcmMessage>() {
+				
+				@Override
+				public void onTimeout(GcmMessage obj) {
+					// TODO Auto-generated method stub
+					log(obj.toString());
+				}
+				
+				@Override
+				public void onReceiveMessage(GcmMessage obj) {
+					// TODO Auto-generated method stub
+					log(obj.toString());
+				}
+				
+				@Override
+				public void onError(GcmMessage obj) {
+					// TODO Auto-generated method stub
+					log(obj.toString());
+				}
+			});
+			
 		}
 
 		@Override
@@ -39,7 +64,7 @@ public class BaseActivity extends FragmentActivity {
 		}
 		
 	};
-	private GoogleCloudMessaging Gcm = null;
+	
 
 	@Override
 	protected void onCreate(Bundle arg0) {

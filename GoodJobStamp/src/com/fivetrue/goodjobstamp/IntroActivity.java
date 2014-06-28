@@ -27,7 +27,6 @@ public class IntroActivity extends BaseActivity {
 				StampVO stamp = new StampVO();
 				stamp.setName("'ojkwon'");
 				stamp.setSenderId(mPref.getGcmDeviceId());
-				
 				mStampDB.setData(stamp);
 			}
 		});

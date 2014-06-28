@@ -15,16 +15,15 @@ public class StampDB implements DatabaseImpl<StampVO>{
 	public interface StampDBListener extends BaseDatabaseListener<StampVO>{
 		
 	};
-
 	
-	private StampDbHelper mStampDb = null;
+	private DatabaseHelper mDBHelper = null;
 	private Context mContext = null;
 	private StampDBListener listener = null;
 	
 	public StampDB(Context context) {
 		// TODO Auto-generated constructor stub
 		mContext = context;
-		mStampDb = new StampDbHelper(mContext);
+		mDBHelper = new DatabaseHelper(mContext);
 	}
 
 
@@ -148,14 +147,14 @@ public class StampDB implements DatabaseImpl<StampVO>{
 	@Override
 	synchronized public SQLiteDatabase getReadble() {
 		// TODO Auto-generated method stub
-		return mStampDb.getReadableDatabase();
+		return mDBHelper.getReadableDatabase();
 	}
 
 
 	@Override
 	synchronized public SQLiteDatabase getWriteble() {
 		// TODO Auto-generated method stub
-		return mStampDb.getWritableDatabase();
+		return mDBHelper.getWritableDatabase();
 	}
 	
 	protected long insert(ContentValues values){

@@ -1,8 +1,10 @@
 package com.fivetrue.goodjobstamp.message;
 
-import android.os.Bundle;
+import com.fivetrue.goodjobstamp.basemodel.BaseVO;
+
 
 public interface BaseMessage {
-	public void setBundleDate(Bundle b);
-	public Bundle getBundleData();
+	long INVALID_DATA = -1;
+	public void setJsonString(BaseVO model);
+	public String getTargetClassName();
 }

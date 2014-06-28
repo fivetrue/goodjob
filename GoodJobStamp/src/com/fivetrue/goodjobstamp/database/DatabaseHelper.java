@@ -4,10 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class StampDbHelper extends SQLiteOpenHelper{
+public class DatabaseHelper extends SQLiteOpenHelper{
 	
 
-	public StampDbHelper(Context context) {
+	public DatabaseHelper(Context context) {
 		super(context, DBConstants.DB_NAME, null, DBConstants.DB_VER);
 		// TODO Auto-generated constructor stub
 	}
@@ -16,6 +16,7 @@ public class StampDbHelper extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
 		db.execSQL(DBConstants.Stamp.CREATE_QUERY);
+		db.execSQL(DBConstants.Member.CREATE_QUERY);
 	}
 
 	@Override

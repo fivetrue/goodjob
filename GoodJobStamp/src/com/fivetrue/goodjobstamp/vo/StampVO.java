@@ -1,5 +1,6 @@
 package com.fivetrue.goodjobstamp.vo;
 
+
 import com.fivetrue.goodjobstamp.basemodel.BaseVO;
 
 public class StampVO implements BaseVO {
@@ -16,9 +17,14 @@ public class StampVO implements BaseVO {
 	private String maxCount;
 	private String extra;
 	private String description;
+	private String className;
 	
-	
-	
+	public StampVO() {
+		className = StampVO.class.getName();
+	}
+	public String getClassName() {
+		return className;
+	}
 	public String getIndex() {
 		return index;
 	}
@@ -106,7 +112,4 @@ public class StampVO implements BaseVO {
 				+ ", currentCount=" + currentCount + ", maxCount=" + maxCount
 				+ ", extra=" + extra + ", description=" + description + "]";
 	}
-	
-	
-	
 }
