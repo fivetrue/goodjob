@@ -1,4 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
+    <!--  Common -->
+    <color name="transparent">#00FFFFFF</color>
+    <color name="gray_line">#FF8C8C8C</color>
+    
+    <!-- Action bar Color -->
+    <color name="actionbar_background">#FFFFE400</color>
+    <color name="actionbar_selected">#80c6e0fa</color>
+    <color name="actionbar_text">#FFFFFFFF</color>
+    
+    <!-- Drawer bar Color -->
+    <color name="drawer_background">#FFFFFFFF</color>
+    
+    
+    <!-- Stamp item -->
+    <color name="item_stamp_background">#FFFFFFFF</color>
+    <color name="item_stamp_profile_background">#FF8C8C8C</color>
+    
+    <!-- Activities -->
+    <color name="activity_background">#10EAEAEA</color>
+    <color name="setting_textview_background">#FFFFFF8F</color>
+    <color name="setting_textview">#FF747474</color>
+    <color name="activity_underline">#FF747474</color>
+    
+    
+<!--     <color name="item_stamp_background">#20FFE400</color> -->
+
+	<color name="drawer_pressed">#77D4F4FA</color>
+    
 </resources>
+

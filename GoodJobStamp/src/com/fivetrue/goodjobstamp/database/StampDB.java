@@ -126,7 +126,55 @@ public class StampDB implements DatabaseImpl<StampVO>{
 	@Override
 	public ArrayList<StampVO> getAllData() {
 		// TODO Auto-generated method stub
-		return null;
+		
+		Cursor cursor = getReadble().query(DBConstants.Stamp.TABLE_NAME, DBConstants.Stamp.COLUMNS,
+				null, null, 
+				null, null, 
+				null);
+		
+		ArrayList<StampVO> arr = new ArrayList<StampVO>();
+		if (cursor.moveToFirst())
+		{
+			int index = cursor.getColumnIndex(DBConstants.Stamp.FIELD_INDEX);
+			int name = cursor.getColumnIndex(DBConstants.Stamp.FIELD_NAME);
+			int sender = cursor.getColumnIndex(DBConstants.Stamp.FIELD_SENDER);
+			int senderId = cursor.getColumnIndex(DBConstants.Stamp.FIELD_SENDER_ID);
+			int senderKakao = cursor.getColumnIndex(DBConstants.Stamp.FIELD_SENDER_KAKAO);
+			int create = cursor.getColumnIndex(DBConstants.Stamp.FIELD_CREATE_DATE);
+			int update = cursor.getColumnIndex(DBConstants.Stamp.FIELD_UPDATE_DATE);
+			int purpose = cursor.getColumnIndex(DBConstants.Stamp.FIELD_PURPOSE);
+			int prize = cursor.getColumnIndex(DBConstants.Stamp.FIELD_PRIZE);
+			int current = cursor.getColumnIndex(DBConstants.Stamp.FIELD_CURRENT);
+			int max = cursor.getColumnIndex(DBConstants.Stamp.FIELD_MAX);
+			int extra = cursor.getColumnIndex(DBConstants.Stamp.FIELD_EXTRA);
+			int description = cursor.getColumnIndex(DBConstants.Stamp.FIELD_DESCRIPTION);
+
+			do
+			{
+				StampVO stamp = new StampVO();
+				
+				stamp.setIndex(cursor.getString(index));
+				stamp.setName(cursor.getString(name));
+				stamp.setSender(cursor.getString(sender));
+				stamp.setSenderId(cursor.getString(senderId));
+				stamp.setSenderKakao(cursor.getString(senderKakao));
+				stamp.setCreateDate(cursor.getString(create));
+				stamp.setUpdateDate(cursor.getString(update));
+				stamp.setPurpose(cursor.getString(purpose));
+				stamp.setPrize(cursor.getString(prize));
+				stamp.setCurrentCount(cursor.getString(current));
+				stamp.setMaxCount(cursor.getString(max));
+				stamp.setExtra(cursor.getString(extra));
+				stamp.setDescription(cursor.getString(description));
+				arr.add(stamp);
+				
+			} while(cursor.moveToNext());
+		}
+		
+		if(cursor!=null)
+			cursor.close();
+		
+		return arr;
 	}
 
 

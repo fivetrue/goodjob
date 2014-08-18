@@ -1,9 +1,10 @@
 package com.fivetrue.goodjobstamp.entry;
 
+import com.fivetrue.goodjobstamp.basemodel.BaseEntry;
 import com.fivetrue.goodjobstamp.vo.MemberVO;
 import com.fivetrue.goodjobstamp.vo.StampVO;
 
-public class GcmEntry {
+public class MainEntry implements BaseEntry{
 	
 	private StampVO stamp = null;
 	private MemberVO member = null;
@@ -21,9 +22,7 @@ public class GcmEntry {
 	}
 	@Override
 	public String toString() {
-		return "GcmEntry [stamp=" + stamp + ", member=" + member + "]";
+		return "MainEntry [stamp=" + stamp + ", member=" + member + "]";
 	}
-	
-	
 
 }

@@ -1,4 +1,4 @@
-package com.fivetrue.goodjobstamp.asynctask;
+/*package com.fivetrue.goodjobstamp.asynctask;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -98,3 +98,4 @@ public class NetworkSocketASyncTask extends NetworkBaseASyncTask{
 	
 
 }
+*/

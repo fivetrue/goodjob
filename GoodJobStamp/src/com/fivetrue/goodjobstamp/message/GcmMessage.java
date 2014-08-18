@@ -1,6 +1,7 @@
 	package com.fivetrue.goodjobstamp.message;
 
 
+import com.fivetrue.goodjobstamp.basemodel.BaseEntry;
 import com.fivetrue.goodjobstamp.basemodel.BaseVO;
 import com.fivetrue.goodjobstamp.vo.StampVO;
 import com.google.gson.Gson;
@@ -12,7 +13,6 @@ public class GcmMessage implements BaseMessage{
 	private String errorMessage = null;
 	private int timeToLive = 1800;
 	private String json = null;
-	private String targetClassName = null;
 	
 	public GcmMessage(){}
 
@@ -59,12 +59,10 @@ public class GcmMessage implements BaseMessage{
 	}
 
 	@Override
-	public void setJsonString(BaseVO vo) {
+	public void setJsonString(BaseEntry entry) {
 		// TODO Auto-generated method stub
 		Gson gson = new Gson();
-		StampVO stamp = (StampVO) vo;
-		this.targetClassName = stamp.getClassName();
-		setJson(gson.toJson(stamp)); 
+		setJson(gson.toJson(entry)); 
 	}
 	
 	public String getErrorMessage() {
@@ -81,11 +79,6 @@ public class GcmMessage implements BaseMessage{
 
 	public void setJson(String json) {
 		this.json = json;
-	}
-
-	@Override
-	public String getTargetClassName() {
-		return targetClassName;
 	}
 
 	@Override

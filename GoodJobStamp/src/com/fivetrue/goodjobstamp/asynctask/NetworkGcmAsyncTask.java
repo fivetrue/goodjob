@@ -9,7 +9,6 @@ import com.google.android.gcm.server.Message;
 import com.google.android.gcm.server.Result;
 import com.google.android.gcm.server.Sender;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.google.gson.Gson;
 
 public class NetworkGcmAsyncTask extends NetworkBaseASyncTask <GcmMessage> {
 	private final int INVALIDE_MESSAGE = -1;
@@ -61,7 +60,7 @@ public class NetworkGcmAsyncTask extends NetworkBaseASyncTask <GcmMessage> {
 			case GCM_REGISTER :
 				GcmMessage gcm = new GcmMessage();
 				try {
-					gcm.setMessageId(mGcm.register(Config.GOOGLE_PROJECT_ID)); 
+					gcm.setMessageId(mGcm.register(Config.GCM.GOOGLE_PROJECT_ID)); 
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -74,13 +73,12 @@ public class NetworkGcmAsyncTask extends NetworkBaseASyncTask <GcmMessage> {
 				GcmMessage obj = params[0];
 				
 				try {
-					Sender sender = new Sender(Config.GOOGLE_GCM_API_KEY);
+					Sender sender = new Sender(Config.GCM.GOOGLE_GCM_API_KEY);
 					Message message = new Message.Builder()
 					// GCM 서버에서 중복 메시지를 보낼 경우 일부 수신이 안될 수 있다.
 					.collapseKey(String.valueOf(Math.random() % 100 + 1))
-					.addData(Config.GCM.MESSAGE_TYPE, Config.GCM.MESSAGE_SEND)
+					.addData(Config.GCM.MESSAGE_TYPE, Config.GCM.MESSAGE_DATA)
 					.addData(Config.GCM.CONTENT, obj.getJson())
-					.addData(Config.GCM.CLASS_NAME, obj.getTargetClassName())
 					.delayWhileIdle(false)
 					.timeToLive(obj.getTimeToLive())
 					.build();

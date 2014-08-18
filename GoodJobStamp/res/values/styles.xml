@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -14,7 +14,20 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:scrollingCache">false</item>
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    
+    
+    <style name="textView_drawer" >
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:shadowColor">#4e000000</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:gravity">center</item>
     </style>
 
 </resources>

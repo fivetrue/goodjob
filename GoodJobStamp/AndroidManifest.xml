@@ -18,12 +18,18 @@
         android:protectionLevel="signature" />
 
     <uses-permission android:name="com.fivetrue.goodjobstamp.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <!-- android:name="com.fivetrue.goodjobstamp.MainActivity" -->
         <activity
             android:name="com.fivetrue.goodjobstamp.IntroActivity"
             android:label="@string/app_name" >
@@ -33,6 +39,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity android:name="com.fivetrue.goodjobstamp.MainActivity"
+            android:screenOrientation="portrait" />
+        
+        <activity android:name="com.fivetrue.goodjobstamp.UserPropertiesActivity"
+            android:screenOrientation="portrait" />
 
         <!-- Receiver -->
         <receiver
@@ -41,6 +53,7 @@
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="com.fivetrue.goodjobstamp" />
             </intent-filter>
         </receiver>
@@ -48,10 +61,14 @@
         <!-- Service -->
         <service android:name="com.fivetrue.goodjobstamp.service.GoodJobGCMService" >
         </service>
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        
+        <!-- Kakao -->
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="@string/kakao_app_key"/>
+        <activity android:configChanges="orientation|screenSize"
+             android:name="com.kakao.LoginActivity"/>
     </application>
 
 </manifest>

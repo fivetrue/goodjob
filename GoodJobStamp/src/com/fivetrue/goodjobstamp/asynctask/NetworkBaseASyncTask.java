@@ -7,5 +7,7 @@ import android.os.AsyncTask;
 abstract public class NetworkBaseASyncTask <T> extends AsyncTask <T, Object, T>{
 
 	abstract public void sendMessage(T msg, BaseNetworkListener<T> listener);
-
+	public void log(Object obj){
+		System.out.println("ojkwon : " + obj);
+	}
 }

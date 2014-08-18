@@ -58,24 +58,27 @@ public class DBConstants {
 		static public String TABLE_NAME = "member";
 		static public String FIELD_INDEX = "_index";
 		static public String FIELD_NAME = "_name";
-		static public String FIELD_SENDER_ID = "_senderId";
-		static public String FIELD_SENDER_KAKAO = "_senderKakao";
+		static public String FIELD_ID = "_id";
+		static public String FIELD_KAKAO = "_Kakao";
 		static public String FIELD_COMMENT = "_comment";
+		static public String FIELD_IP = "_ip";
 		
 		public static final String CREATE_QUERY = 
 				"CREATE TABLE IF NOT EXISTS " + DBConstants.Stamp.TABLE_NAME
 	            + "(" + DBConstants.Member.FIELD_INDEX + " INTEGER PRIMARY KEY AUTOINCREMENT, "
 	            + DBConstants.Member.FIELD_NAME + " TEXT, "
-	            + DBConstants.Member.FIELD_SENDER_ID + " TEXT, "
-	            + DBConstants.Member.FIELD_SENDER_KAKAO + " TEXT, "
-	            + DBConstants.Member.FIELD_COMMENT + " TEXT);";
+	            + DBConstants.Member.FIELD_ID + " TEXT, "
+	            + DBConstants.Member.FIELD_KAKAO + " TEXT, "
+	            + DBConstants.Member.FIELD_COMMENT + " TEXT, " 
+				+ DBConstants.Member.FIELD_IP + " TEXT);";
 		
 		static public String[] COLUMNS = {
 			FIELD_INDEX,
 			FIELD_NAME,
-			FIELD_SENDER_ID,
-			FIELD_SENDER_KAKAO,
+			FIELD_ID,
+			FIELD_KAKAO,
 			FIELD_COMMENT,
+			FIELD_IP
 		};
 	}
 }

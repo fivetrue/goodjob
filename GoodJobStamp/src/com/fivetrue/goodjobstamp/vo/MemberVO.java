@@ -9,6 +9,7 @@ public class MemberVO implements BaseVO{
 	private String kakaoId = null;
 	private String senderId = null;
 	private String comment = null;
+	private String ip = null;
 	
 			
 	public String getIndex() {
@@ -51,11 +52,21 @@ public class MemberVO implements BaseVO{
 		this.comment = comment;
 	}
 
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	
+
 	@Override
 	public String toString() {
-		return "FriendVO [index=" + index + ", name=" + name + ", kakaoId="
+		return "MemberVO [index=" + index + ", name=" + name + ", kakaoId="
 				+ kakaoId + ", senderId=" + senderId + ", comment=" + comment
-				+ "]";
+				+ ", ip=" + ip + "]";
 	}
 
 	@Override
